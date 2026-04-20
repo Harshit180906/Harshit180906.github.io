@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Harshit | Portfolio</title>
 <link rel="stylesheet" href="style.css">
+
+<!-- Animation Library -->
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 </head>
 
 <body>
@@ -22,7 +27,10 @@
 <section class="hero">
     <div class="hero-text">
         <h1>Yakkala Venkata Krishna Harshit</h1>
-        <h2>Software Developer</h2>
+
+        <!-- Typing effect -->
+        <h2><span id="typing"></span></h2>
+
         <p>Passionate Computer Science student building practical solutions through code and continuous learning.</p>
 
         <a href="YAKKALA VENKATA KRISHNA HARSHIT_Doc (2).pdf" download class="btn">Download Resume</a>
@@ -33,19 +41,17 @@
     </div>
 </section>
 
-<section id="about">
+<section id="about" data-aos="fade-up">
 <h2>About Me</h2>
 <p>
-I am a Computer Science student with strong interest in software development and problem-solving.
-I work on web development, databases, and machine learning projects.
-I have hands-on experience in C, C++, and Python.
-My goal is to build efficient real-world applications and grow as a skilled software engineer.
+I am a Computer Science student focused on software development, machine learning, and real-world problem solving.
+I enjoy building scalable applications and continuously improving my technical skills.
 </p>
 </section>
 
-<section id="skills">
+<section id="skills" data-aos="fade-up">
 <h2>Skills</h2>
-<div class="skills-container">
+<div class="skills">
 <span>C</span>
 <span>C++</span>
 <span>Python</span>
@@ -56,27 +62,27 @@ My goal is to build efficient real-world applications and grow as a skilled soft
 </div>
 </section>
 
-<section id="projects">
+<section id="projects" data-aos="fade-up">
 <h2>Projects</h2>
 
-<div class="project-card">
+<div class="project">
 <h3>Crop Disease Detection</h3>
-<p>AI-based system using CNN, Random Forest, and KNN for accurate crop disease prediction with treatment suggestions.</p>
+<p>Deep learning + ensemble model for accurate crop disease prediction.</p>
 </div>
 
-<div class="project-card">
+<div class="project">
 <h3>Waste Food Management</h3>
-<p>Web platform to reduce food wastage using PHP and MySQL with role-based system for donation and delivery.</p>
+<p>Platform to reduce food wastage using PHP + MySQL.</p>
 </div>
 
-<div class="project-card">
+<div class="project">
 <h3>Face Detection System</h3>
-<p>AI-powered face detection and recognition using CNN and OpenCV.</p>
+<p>AI-based face recognition system using CNN + OpenCV.</p>
 </div>
 
 </section>
 
-<section id="contact">
+<section id="contact" data-aos="fade-up">
 <h2>Contact</h2>
 <p>📞 9535246495</p>
 <p>📧 yvkharshit@gmail.com</p>
@@ -86,8 +92,36 @@ My goal is to build efficient real-world applications and grow as a skilled soft
 </section>
 
 <footer>
-<p>© 2026 Harshit | All Rights Reserved</p>
+<p>© 2026 Harshit</p>
 </footer>
+
+<script>
+AOS.init();
+
+/* Typing Effect */
+const text = ["Software Developer", "ML Enthusiast", "Problem Solver"];
+let i = 0, j = 0, current = "", isDeleting = false;
+
+function type() {
+    current = text[i];
+    if (!isDeleting) {
+        document.getElementById("typing").innerHTML = current.substring(0, j++);
+        if (j > current.length) {
+            isDeleting = true;
+            setTimeout(type, 1000);
+            return;
+        }
+    } else {
+        document.getElementById("typing").innerHTML = current.substring(0, j--);
+        if (j == 0) {
+            isDeleting = false;
+            i = (i + 1) % text.length;
+        }
+    }
+    setTimeout(type, isDeleting ? 50 : 100);
+}
+type();
+</script>
 
 </body>
 </html>
